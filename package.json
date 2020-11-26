@@ -1,0 +1,21 @@
+{
+  "name": "googly-bookworm",
+  "version": "1.0.0",
+  "description": "React-based Google Books Search app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meenaambalam/googly-bookworm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meenaambalam/googly-bookworm/issues"
+  },
+  "homepage": "https://github.com/meenaambalam/googly-bookworm#readme"
+}

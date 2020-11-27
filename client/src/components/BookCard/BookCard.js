@@ -6,7 +6,7 @@ import "./BookCard.css";
 function BookCard(props) {
 
     function saveBook(bookData){
-        console.log("savebook:", bookData);
+        console.log("saveBook called from BookCArd: ", bookData);
         API.saveBook({
             id: bookData.id,
             title: bookData.title,

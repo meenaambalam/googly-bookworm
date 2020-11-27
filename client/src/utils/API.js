@@ -10,9 +10,13 @@ export default {
         return axios.get(BASEURL + query + APIKEY);
     },
     saveBook: function(bookData){
+        console.log("SAVE BOOK API call", bookData);
         return axios.post("/api/books", bookData);
     },
+    getBooks: function(){
+        return axios.get("/api/books");
+    },
     deleteBook: function(id){
-        return axios.delete("api/books" + id);
+        return axios.delete("/api/books" + id);
     }
 }

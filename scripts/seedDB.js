@@ -8,6 +8,8 @@ mongoose.connect(
     "mongodb://localhost/googliesbooklist"
 );
 
+console.log("DB: ", db);
+
 const bookSeed = [
     {   
         id: "ZbUACwAAQBAJ",
@@ -27,6 +29,15 @@ const bookSeed = [
         description:
         "The \"brilliant, funny, meaningful novel\" (The New Yorker) that established J. D. Salinger as a leading voice in American literature--and that has instilled in millions of readers around the world a lifelong love of books. \"If you really want to hear about it, the first thing you'll probably want to know is where I was born, and what my lousy childhood was like, and how my parents were occupied and all before they had me, and all that David Copperfield kind of crap, but I don't feel like going into it, if you want to know the truth.\" The hero-narrator of The Catcher in the Rye is an ancient child of sixteen, a native New Yorker named Holden Caufield. Through circumstances that tend to preclude adult, secondhand description, he leaves his prep school in Pennsylvania and goes underground in New York City for three days.",
         infoLink: "http://books.google.com/books?id=__AEygEACAAJ&dq=CAtcher+in+the+Rye&hl=&source=gbs_api",
+        date: new Date(Date.now())
+      },
+      {
+        id: '48W2DwAAQBAJ',
+        title: 'Treasure Island!!!',
+        author: [ 'Sara Levine' ],
+        image: 'http://books.google.com/books/content?id=48W2DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        description: 'A young slacker decides to live her life according to Robert Louis Stevenson’s classic adventure: “A rollicking tale, shameless, funny and intelligent” (The New York Times). When a college graduate with a history of hapless jobs (ice cream scooper, gift wrapper, laziest ever part-time clerk at The Pet Library) reads Robert Louis Stevenson’s novel Treasure Island, she is dumbstruck by the timid design of her life. When had she ever dreamed a scheme? When had she ever done a foolish, overbold act? When had she ever, like Jim Hawkins, broken from her friends, raced for the beach, stolen a boat, killed a man, and eliminated an obstacle that stood in the way of her getting a hunk of gold? Convinced that Stevenson’s book is cosmically intended for her, she redesigns her life according to its Core Values: boldness, resolution, independence, and horn-blowing. Accompanied by her mother, her sister, and a hostile Amazon parrot that refuses to follow the script, our heroine embarks on a domestic adventure more frightening than anything she’d originally planned. Treasure Island!!! is the story of a ferocious obsession, told by an original voice—“insane, hilarious, and irreverent” (Alice Sebold). “Highly original . . . will keep you entertained in spite of (or more accurately, because of) its toxic narrator.” —Library Journal “A hoot.” —Kirkus Reviews',
+        infoLink: 'https://play.google.com/store/books/details?id=48W2DwAAQBAJ&source=gbs_api',
         date: new Date(Date.now())
       }
 ];

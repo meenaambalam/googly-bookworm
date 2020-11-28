@@ -1,16 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import API from "../utils/API";
+import BookCard from "../components/BookCard/BookCard";
 
 
 function SavedBooks() {
-    
+    const [savedBooks, setSavedBooks] = useState([]);
+
+    useEffect(() => {
+        loadBooks()
+    }, []);
+
+    function loadBooks()
+    {
+        API.getAllBooks()
+        .then(res => {
+            console.log("Book Saved Return from DB! ", res.data);
+            setSavedBooks(res.data);
+            console.log("After Setbooks : ", res.data);
+        })
+        .catch(err => console.log(err));
+    }
+
     return (
         <>
-            <h1> 404 - SAVED BOOKS Page Not Found</h1>
-            <h1>
-                <span role="img" ariab-label="SAVED BOOKS Face With Rolling Eyes Emoji">
-                    🙄
-                            </span>
-            </h1>
+            <Container>
+                <Row className="show-grid">
+                    <Col xs={6} lg={12}>
+                        <h6>Saved Results:</h6>
+                    </Col>
+                    {savedBooks.length ? (
+                        savedBooks.map(book => (
+                            <BookCard
+                                id={book.id}
+                                key={book.id}
+                                title={book.volumeInfo.title}
+                                author={book.volumeInfo.authors} //.join()
+                                description={book.volumeInfo.description}
+                                image={book.volumeInfo.imageLinks.thumbnail}
+                                infoLink={book.volumeInfo.infoLink}
+                            />
+                        ))
+                    ) : (
+                            <h3> No results to Display</h3>
+                        )}
+                </Row>
+            </Container>
         </>
     );
 }

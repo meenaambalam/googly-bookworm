@@ -1,8 +1,11 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-// const routes = require("./routes");
+const routes = require("./routes");
 const app = express();
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
 const PORT = process.env.PORT || 3001;
 
 // Meena - This application level middleware prints incoming requests to the servers console, useful to see incoming requests
@@ -11,35 +14,47 @@ app.use((req, res, next) => {
   next();
 });
 
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-} else{
-  app.use(express.static("public"));
 }
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googliesbooklist", function(error){
-  if (error){
-    console.log("error in creating connection", error);
-  } else {
-    console.log(`mongodb connected`);
-  }
-});
 
 // Add routes, both API and view
-// app.use(routes);
-// routes
-app.use(require("./routes/api.js"));
+app.use(routes);
+// Connect to the Mongo DB
 
-// If no API routes are hit, send the React app
-app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googliesbooklist", { useNewUrlParser: true });
+const connection = mongoose.connection;
+
+connection.once("open", function(){
+  console.log("connection with MongoDB was successful");
 });
 
 
+// routes
+// app.use(require("./routes/api.js"));
+// require('./routes/api.js')(app);
+// app.use("/", router);
+
+// // If no API routes are hit, send the React app
+// app.use(function(req, res) {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
+
+// // Add routes, both API and view
+// app.use(routes);
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

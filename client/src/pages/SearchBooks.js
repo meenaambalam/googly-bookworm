@@ -7,28 +7,27 @@ function SearchBooks() {
 
     const [books, setBooks] = useState([]);
     const [formSearch, setFormSearch] = useState({});
-    // let pageLoad = false;
 
-    // useEffect(() => {
-    //         pageLoad = true;
-    // }, [])
 
-    // function loadBooks(){
-    //     API.getBooks()
-    //     .then(res => 
-    //         setBooks(res.data)
-    //     )
-    //     .catch(err => console.log(err));
+    // async function searchGoogleBooksAPI(query) {
+    //     await API.searchBook(query)
+    //         .then(res => {
+    //             console.log("API - Results:", res.data.items)
+    //             setBooks(res.data.items);
+    //         })
+    //         .catch(err => console.log(err));
     // }
 
     function searchGoogleBooksAPI(query) {
-        API.search(query)
+        API.searchBook(query)
             .then(res => {
                 console.log("API - Results:", res.data.items)
                 setBooks(res.data.items);
             })
             .catch(err => console.log(err));
     }
+
+    
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -78,10 +77,12 @@ function SearchBooks() {
                                 id={book.id}
                                 key={book.id}
                                 title={book.volumeInfo.title}
-                                author={book.volumeInfo.authors} //.join()
+                                author={book.volumeInfo.authors ? book.volumeInfo.authors.join() : ""}
                                 description={book.volumeInfo.description}
                                 image={book.volumeInfo.imageLinks.thumbnail}
                                 infoLink={book.volumeInfo.infoLink}
+                                // buttonName="SAVE"
+                                // buttonFunction="saveBook(props)"
                             />
                         ))
                     ) : (

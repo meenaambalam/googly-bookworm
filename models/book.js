@@ -7,11 +7,11 @@ const bookSchema = new Schema({
     author: {type: String},
     image: String,
     description: String,
-    infoLink: String,
-    date: {type: Date, default: Date.now}
-});
+    infoLink: String
+    });
 
 const Book = mongoose.model("Book", bookSchema);
 
 module.exports = Book;
+
 

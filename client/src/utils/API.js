@@ -3,20 +3,22 @@ import axios from "axios";
 const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
 const APIKEY = "&key=AIzaSyDzB4A00IQRdENSmJxaiOjQhen9K4YRfNs";
 
-// Export an object with a "search" method that searches the Giphy API for the passed query
 export default {
-    search : function(query) {
-        console.log("API URL: " + BASEURL + query + APIKEY);
-        return axios.get(BASEURL + query + APIKEY);
-    },
-    saveBook: function(bookData){
-        console.log("SAVE BOOK API call", bookData);
-        return axios.post("/api/books", bookData);
-    },
-    getBooks: function(){
-        return axios.get("/api/books");
-    },
-    deleteBook: function(id){
-        return axios.delete("/api/books" + id);
-    }
-}
+  searchBook: function(query){
+      return axios.get(BASEURL + query + APIKEY);
+  },
+  // Gets all books
+  getAllBooks: function() {
+    return axios.get("/api/books");
+  },
+  // Deletes the book with the given id
+  deleteBook: function(id) {
+    return axios.delete("/api/books/" + id);
+  },
+  // Saves a book to the database
+  saveBook: async function(bookData) {
+    console.log("Meena - from utils/API.js: ", bookData);
+    const result = await axios.post("/api/books", bookData);
+    return result;
+  }
+};

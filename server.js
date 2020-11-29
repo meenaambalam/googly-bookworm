@@ -42,11 +42,12 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googliesbooklis
   useCreateIndex: true,
   useFindAndModify: false
 });
-// const connection = mongoose.connection;
 
-// connection.once("open", function(){
-//   console.log("connection with MongoDB was successful");
-// });
+const connection = mongoose.connection;
+
+connection.once("open", function(){
+  console.log("connection with MongoDB was successful");
+});
 
 
 // Start the API server

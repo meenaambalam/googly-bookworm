@@ -22,11 +22,9 @@ function BookCard(props) {
                 })
                 .catch(err => console.log(err));
         } else if( bookData.buttonName === "DELETE") {
-            console.log("deleteBook called from BookCArd: bookData ", bookData);
             console.log("deleteBook called from BookCArd: ", bookData.id);
             API.deleteBook(bookData.id)
                 .then(res => {
-                    console.log("Book Deleted! ", res);
                     alert("Book Deleted from the list!");
                     props.functionPropLoadBook();
                 })

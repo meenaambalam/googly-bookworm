@@ -32,13 +32,15 @@ function SavedBooks() {
                     {savedBooks.length ? (
                         savedBooks.map(book => (
                             <BookCard
-                                id={book.id}
-                                key={book.id}
-                                title={book.volumeInfo.title}
-                                author={book.volumeInfo.authors} //.join()
-                                description={book.volumeInfo.description}
-                                image={book.volumeInfo.imageLinks.thumbnail}
-                                infoLink={book.volumeInfo.infoLink}
+                                id={book._id}
+                                key={book._id}
+                                title={book.title}
+                                author={book.author}
+                                description={book.description}
+                                image={book.image}
+                                infoLink={book.infoLink}
+                                buttonName="DELETE"
+                                functionPropLoadBook={loadBooks}
                             />
                         ))
                     ) : (

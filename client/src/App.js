@@ -22,9 +22,9 @@ function App(){
                     <Route exact path="/saved">
                         <SavedBooks />
                     </Route>
-                    {/* <Route>
+                    <Route>
                         <NoMatch />
-                    </Route> */}
+                    </Route>
                 </Switch>
             </div>
         </Router>

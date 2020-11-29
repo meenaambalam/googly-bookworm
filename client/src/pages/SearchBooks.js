@@ -8,16 +8,6 @@ function SearchBooks() {
     const [books, setBooks] = useState([]);
     const [formSearch, setFormSearch] = useState({});
 
-
-    // async function searchGoogleBooksAPI(query) {
-    //     await API.searchBook(query)
-    //         .then(res => {
-    //             console.log("API - Results:", res.data.items)
-    //             setBooks(res.data.items);
-    //         })
-    //         .catch(err => console.log(err));
-    // }
-
     function searchGoogleBooksAPI(query) {
         API.searchBook(query)
             .then(res => {
@@ -74,15 +64,14 @@ function SearchBooks() {
                     {books.length ? (
                         books.map(book => (
                             <BookCard
-                                id={book.id}
+                                bookId={book.id}
                                 key={book.id}
                                 title={book.volumeInfo.title}
                                 author={book.volumeInfo.authors ? book.volumeInfo.authors.join() : ""}
-                                description={book.volumeInfo.description}
-                                image={book.volumeInfo.imageLinks.thumbnail}
-                                infoLink={book.volumeInfo.infoLink}
-                                // buttonName="SAVE"
-                                // buttonFunction="saveBook(props)"
+                                description={book.volumeInfo.description ? book.volumeInfo.description : ""}
+                                image={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ""}
+                                infoLink={book.volumeInfo.infoLink ? book.volumeInfo.infoLink : ""}
+                                buttonName="SAVE"
                             />
                         ))
                     ) : (

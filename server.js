@@ -43,18 +43,6 @@ connection.once("open", function(){
 });
 
 
-// routes
-// app.use(require("./routes/api.js"));
-// require('./routes/api.js')(app);
-// app.use("/", router);
-
-// // If no API routes are hit, send the React app
-// app.use(function(req, res) {
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
-
-// // Add routes, both API and view
-// app.use(routes);
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

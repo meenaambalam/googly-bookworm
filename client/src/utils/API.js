@@ -7,18 +7,19 @@ export default {
   searchBook: function(query){
       return axios.get(BASEURL + query + APIKEY);
   },
+  // Saves a book to the database
+  saveBook: async function(bookData) {
+    console.log("Meena - from utils/API.js: ", bookData);
+    const result = await axios.post("/api/books", bookData);
+    return result;
+  },
   // Gets all books
   getAllBooks: function() {
     return axios.get("/api/books");
   },
   // Deletes the book with the given id
   deleteBook: function(id) {
+    console.log("AXIOS deleteBook function - id: ", id);
     return axios.delete("/api/books/" + id);
-  },
-  // Saves a book to the database
-  saveBook: async function(bookData) {
-    console.log("Meena - from utils/API.js: ", bookData);
-    const result = await axios.post("/api/books", bookData);
-    return result;
   }
 };

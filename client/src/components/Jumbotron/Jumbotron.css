@@ -1,4 +1,10 @@
 .jumbotron {
-    background: darkgoldenrod;
     height: 200px;
+    color: white;
+    background-color: darkslategrey!important;
+}
+
+.googly{
+    width:100px;
+    height:100px;
 }

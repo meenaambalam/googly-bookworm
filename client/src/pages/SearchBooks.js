@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import API from "../utils/API";
 import BookCard from "../components/BookCard/BookCard";
+import "../index.css";
 
+// "SearchBooks" Page Route
 function SearchBooks() {
 
     const [books, setBooks] = useState([]);
     const [formSearch, setFormSearch] = useState({});
 
+    // Invokes the Client API "searchbook" request
     function searchGoogleBooksAPI(query) {
         API.searchBook(query)
             .then(res => {
@@ -17,25 +20,24 @@ function SearchBooks() {
             .catch(err => console.log(err));
     }
 
-    
 
+    // Handle Input change event of the Search string "input" element
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormSearch({ ...formSearch, [name]: value })
 
     };
 
+    // "Search" onclick event handler
     function handleSearch(event) {
         event.preventDefault();
         if (formSearch) {
-            console.log("handleSerach Event: ", event);
-            console.log("handleSearch: ", formSearch.search);
             searchGoogleBooksAPI(formSearch.search);
         }
 
     }
 
-
+    // renders the following jsx
     return (
         <>
             <Container>
@@ -59,7 +61,7 @@ function SearchBooks() {
                 </Row>
                 <Row className="show-grid">
                     <Col xs={6} lg={12}>
-                        <h6>Search Results:</h6>
+                        <span className="spanHeading"><h6>Search Results:</h6></span>
                     </Col>
                     {books.length ? (
                         books.map(book => (
@@ -75,7 +77,7 @@ function SearchBooks() {
                             />
                         ))
                     ) : (
-                            <h3> No results to Display</h3>
+                            <span className="spanHeading"><h3> No results to Display</h3></span>
                         )}
                 </Row>
             </Container>

@@ -8,7 +8,11 @@ const cors = require("cors");
 
 const PORT = process.env.PORT || 3001;
 
-// Meena - This application level middleware prints incoming requests to the servers console, useful to see incoming requests
+//For storing the API_KEY in the env files
+require('dotenv').config();
+console.log("PROCESS ENV: ",process.env.GOOGLY_BOOKWORM_API_KEY);
+
+// This application level middleware prints incoming requests to the servers console, useful to see incoming requests
 app.use((req, res, next) => {
   console.log(`Request_Endpoint: ${req.method} ${req.url}`);
   next();
@@ -33,6 +37,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 app.use(routes);
+
 // Connect to the Mongo DB
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googliesbooklist", 
@@ -43,6 +48,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googliesbooklis
   useFindAndModify: false
 });
 
+// Just a console log for indication that connection to MongoDB was successful
 const connection = mongoose.connection;
 
 connection.once("open", function(){

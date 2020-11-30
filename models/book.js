@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// MongoDB - Model of Books collection
 const bookSchema = new Schema({
     bookId: {type: String, required: true},
     title: {type: String, required: true},

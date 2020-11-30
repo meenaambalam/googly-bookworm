@@ -11,3 +11,21 @@
 .operationBtn{
     margin-left:5px;
 }
+
+.card {
+    width : 1100px;
+}
+
+/* On screens that are 992px or less, set the card width to the card content */
+@media screen and (max-width: 992px) {
+    .card{
+        width: 100%;
+    }
+}
+
+/* On screens that are 600px or less, set the card width to the card  color to olive */
+@media screen and (max-width: 600px) {
+    .card{
+        width: 100%;
+    }
+  }

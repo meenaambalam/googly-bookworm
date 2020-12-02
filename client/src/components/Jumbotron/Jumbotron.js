@@ -11,7 +11,7 @@ function Jumbotron() {
                 <div className="row">
                     <div className="col-10">
                         <h5 className="display-6">Are you a Book Worm? Discover the Universe of Books!</h5>
-                        <p>Googly Bookworm, uses Google Books API to perform full-text searches and retrieve book information. You can save your fav and manage your personal bookshelves.</p>
+                        <p>Googly Bookworm, uses Google Books API to perform full-text searches and retrieve book information. You can save your favorite books and manage your personal bookshelves.</p>
                     </div>
                 </div>
             </div>
